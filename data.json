@@ -1,0 +1,12 @@
+{
+    "destinations": [
+        {"name": "Decryptia", "price": 200},
+        {"name": "Vermillion", "price": 300},
+        {"name": "Oblivion Bay", "price": 250}
+    ],
+    "hotels": [
+        {"name": "Encryptia Grand Hotel", "price": 100},
+        {"name": "Decryptia Lodge", "price": 80},
+        {"name": "Vermillion Suites", "price": 120}
+    ]
+}

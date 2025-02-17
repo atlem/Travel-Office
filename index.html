@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryptia Travel Office</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Encryptia Travel Office</h1>
+        <p>Explore the world of Encryptia and beyond!</p>
+    </header>
+    
+    <section id="booking">
+        <h2>Book Your Trip</h2>
+        <form id="travelForm">
+            <label for="destination">Choose a Destination:</label>
+            <select id="destination" name="destination"></select>
+            
+            <label for="hotel">Choose a Hotel:</label>
+            <select id="hotel" name="hotel"></select>
+            
+            <label for="nights">Number of Nights:</label>
+            <input type="number" id="nights" name="nights" min="1" value="1">
+            
+            <button type="button" onclick="calculatePrice()">Calculate Price</button>
+            <p id="priceOutput"></p>
+        </form>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Encryptia Travel Office</p>
+    </footer>
+</body>
+</html>

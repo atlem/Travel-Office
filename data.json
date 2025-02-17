@@ -1,15 +1,16 @@
 {
-    "destination": [
+    "destinations": [
         {"name": "Decryptia", "price": 200, "image": "Decryptia.png", "description": "A futuristic cyber metropolis."},
         {"name": "Vermillion", "price": 300, "image": "Vermillion.png", "description": "A stunning city of endless red canyons."},
         {"name": "Oblivion Bay", "price": 250, "image": "OblivionBay.png", "description": "A mystical coastal paradise."}
     ],
-    "hotel": [
-        {"name": "Encryptia Grand Hotel", "price": 100},
-        {"name": "Decryptia Lodge", "price": 80},
-        {"name": "Vermillion Suites", "price": 120}
+    "hotels": [
+        {"name": "Encryptia Grand Hotel", "price": 100, "destination": "Decryptia"},
+        {"name": "Decryptia Lodge", "price": 80, "destination": "Decryptia"},
+        {"name": "Vermillion Suites", "price": 120, "destination": "Vermillion"},
+        {"name": "Oblivion Retreat", "price": 90, "destination": "Oblivion Bay"}
     ],
-    "travel_mode": [
+    "travel_modes": [
         {"name": "Train", "price": 50},
         {"name": "Bus", "price": 50},
         {"name": "Flight", "price": 100},

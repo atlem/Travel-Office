@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 slide.src = destination.image;
                 slide.alt = destination.name;
                 slide.classList.add("slide");
+                slide.style.display = "none";
                 slide.onclick = () => {
                     selectDestination(destination.name);
                     bookingSection.scrollIntoView({ behavior: 'smooth' });
@@ -42,11 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 slideshow.appendChild(slide);
             });
 
-            data.hotels.forEach(hotel => {
-                let option = document.createElement("option");
-                option.value = hotel.name;
-                option.textContent = hotel.name;
-                hotelSelect.appendChild(option);
+            updateHotels(destinationSelect.value);
+            destinationSelect.addEventListener("change", function () {
+                updateHotels(this.value);
             });
 
             ["Train", "Bus", "Flight", "Teleport"].forEach(mode => {
@@ -63,6 +62,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function selectDestination(name) {
     document.getElementById("destination").value = name;
+    updateHotels(name);
+}
+
+function updateHotels(destination) {
+    fetch("data.json")
+        .then(response => response.json())
+        .then(data => {
+            const hotelSelect = document.getElementById("hotel");
+            hotelSelect.innerHTML = "";
+
+            const hotelsForDestination = data.hotels.filter(hotel => hotel.destination === destination);
+            if (hotelsForDestination.length === 0) {
+                let option = document.createElement("option");
+                option.textContent = "No hotels available";
+                option.disabled = true;
+                hotelSelect.appendChild(option);
+                return;
+            }
+
+            hotelsForDestination.forEach(hotel => {
+                let option = document.createElement("option");
+                option.value = hotel.name;
+                option.textContent = hotel.name;
+                hotelSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error("Error loading hotels:", error));
 }
 
 function startSlideshow() {
@@ -75,8 +101,10 @@ function startSlideshow() {
         index = (index + 1) % slides.length;
     }
     
-    showSlide();
-    setInterval(showSlide, 3000);
+    if (slides.length > 0) {
+        showSlide();
+        setInterval(showSlide, 3000);
+    }
 }
 
 function calculatePrice() {

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const destinationSelect = document.getElementById("destination");
             const hotelSelect = document.getElementById("hotel");
             const destinationList = document.getElementById("destination-list");
+            const slideshow = document.getElementById("slideshow");
 
             data.destinations.forEach(destination => {
                 let option = document.createElement("option");
@@ -13,8 +14,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 destinationSelect.appendChild(option);
                 
                 let destinationItem = document.createElement("div");
-                destinationItem.innerHTML = `<h3>${destination.name}</h3><img src="${destination.image}" alt="${destination.name}"><p>${destination.description}</p>`;
+                destinationItem.innerHTML = `<h3>${destination.name}</h3>
+                <img src="${destination.image}" alt="${destination.name}" class="thumbnail" onclick="selectDestination('${destination.name}')">
+                <p>${destination.description}</p>`;
                 destinationList.appendChild(destinationItem);
+                
+                let slide = document.createElement("img");
+                slide.src = destination.image;
+                slide.alt = destination.name;
+                slide.classList.add("slide");
+                slide.onclick = () => selectDestination(destination.name);
+                slideshow.appendChild(slide);
             });
 
             data.hotels.forEach(hotel => {
@@ -23,8 +33,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 option.textContent = hotel.name;
                 hotelSelect.appendChild(option);
             });
+
+            startSlideshow();
         });
 });
+
+function selectDestination(name) {
+    document.getElementById("destination").value = name;
+}
+
+function startSlideshow() {
+    let index = 0;
+    const slides = document.querySelectorAll(".slide");
+    
+    function showSlide() {
+        slides.forEach(slide => slide.style.display = "none");
+        slides[index].style.display = "block";
+        index = (index + 1) % slides.length;
+    }
+    
+    showSlide();
+    setInterval(showSlide, 3000);
+}
 
 function calculatePrice() {
     fetch("data.json")

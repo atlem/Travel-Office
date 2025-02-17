@@ -4,7 +4,7 @@
         {"name": "Vermillion", "price": 300, "image": "Vermillion.png", "description": "A stunning city of endless red canyons."},
         {"name": "Oblivion Bay", "price": 250, "image": "OblivionBay.png", "description": "A mystical coastal paradise."}
     ],
-    "hotels": [
+    "hotel": [
         {"name": "Encryptia Grand Hotel", "price": 100},
         {"name": "Decryptia Lodge", "price": 80},
         {"name": "Vermillion Suites", "price": 120}

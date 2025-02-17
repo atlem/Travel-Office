@@ -3,35 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encryptia Travel Office</title>
+    <title>Zenith Journeys - Journey Genie</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
 </head>
 <body>
     <header>
-        <h1>Encryptia Travel Office</h1>
-        <p>Explore the world of Encryptia and beyond!</p>
+        <h1>Zenith Journeys - Journey Genie</h1>
+        <p>Explore stunning vacation destinations with AI-powered assistance.</p>
     </header>
     
-    <section id="booking">
-        <h2>Book Your Trip</h2>
-        <form id="travelForm">
-            <label for="destination">Choose a Destination:</label>
-            <select id="destination" name="destination"></select>
-            
-            <label for="hotel">Choose a Hotel:</label>
-            <select id="hotel" name="hotel"></select>
-            
-            <label for="nights">Number of Nights:</label>
-            <input type="number" id="nights" name="nights" min="1" value="1">
-            
-            <button type="button" onclick="calculatePrice()">Calculate Price</button>
-            <p id="priceOutput"></p>
-        </form>
-    </section>
+    <main>
+        <section id="destinations">
+            <h2>Featured Destinations</h2>
+            <div id="destination-list"></div>
+        </section>
+        
+        <section id="booking">
+            <h2>Book Your Vacation</h2>
+            <form id="travelForm">
+                <label for="destination">Choose a Destination:</label>
+                <select id="destination" name="destination"></select>
+                
+                <label for="hotel">Choose a Hotel:</label>
+                <select id="hotel" name="hotel"></select>
+                
+                <label for="nights">Number of Nights:</label>
+                <input type="number" id="nights" name="nights" min="1" value="1">
+                
+                <button type="button" onclick="calculatePrice()">Calculate Price</button>
+                <p id="priceOutput"></p>
+            </form>
+        </section>
+    </main>
     
     <footer>
-        <p>&copy; 2025 Encryptia Travel Office</p>
+        <p>&copy; 2025 Zenith Journeys - Journey Genie</p>
     </footer>
 </body>
 </html>

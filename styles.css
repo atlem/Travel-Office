@@ -1,13 +1,15 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #5E3B1A;
+    background: url('https://encryptia-learning-files.s3.eu-north-1.amazonaws.com/images/linda%20travel%20office.png') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #F4E9CD;
+    backdrop-filter: blur(10px);
 }
 
 header {
@@ -41,6 +43,8 @@ section {
     max-width: 600px;
     height: 300px;
     overflow: hidden;
+    margin: 0 auto;
+    padding: 0;
 }
 
 .slide {
@@ -50,6 +54,7 @@ section {
     object-fit: cover;
     display: none;
 }
+
 
 label, select, input, button {
     display: block;

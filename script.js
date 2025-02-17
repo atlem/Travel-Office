@@ -4,8 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             const destinationSelect = document.getElementById("destination");
             const hotelSelect = document.getElementById("hotel");
+            const travelSelect = document.getElementById("travel");
             const destinationList = document.getElementById("destination-list");
             const slideshow = document.getElementById("slideshow");
+            const bookingSection = document.getElementById("booking");
 
             data.destinations.forEach(destination => {
                 let option = document.createElement("option");
@@ -23,15 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 slide.src = destination.image;
                 slide.alt = destination.name;
                 slide.classList.add("slide");
-                slide.onclick = () => selectDestination(destination.name);
+                slide.onclick = () => {
+                    selectDestination(destination.name);
+                    bookingSection.scrollIntoView({ behavior: 'smooth' });
+                };
                 slideshow.appendChild(slide);
             });
 
-            data.hotels.forEach(hotel => {
+            ["Train", "Bus", "Flight", "Teleport"].forEach(mode => {
                 let option = document.createElement("option");
-                option.value = hotel.name;
-                option.textContent = hotel.name;
-                hotelSelect.appendChild(option);
+                option.value = mode.toLowerCase();
+                option.textContent = mode;
+                travelSelect.appendChild(option);
             });
 
             startSlideshow();
@@ -62,12 +67,14 @@ function calculatePrice() {
         .then(data => {
             const destination = document.getElementById("destination").value;
             const hotel = document.getElementById("hotel").value;
+            const travel = document.getElementById("travel").value;
             const nights = parseInt(document.getElementById("nights").value);
             
             const destinationPrice = data.destinations.find(d => d.name === destination).price;
             const hotelPrice = data.hotels.find(h => h.name === hotel).price;
+            const travelCost = travel === "teleport" ? 500 : 50;
             
-            const totalPrice = (destinationPrice + hotelPrice) * nights;
+            const totalPrice = (destinationPrice + hotelPrice + travelCost) * nights;
             
             document.getElementById("priceOutput").textContent = `Total Price: $${totalPrice}`;
         });

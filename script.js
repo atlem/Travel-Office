@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("data.json")
+    fetch("https://raw.githubusercontent.com/atlem/Travel-Office/refs/heads/main/data.json")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -66,7 +66,7 @@ function selectDestination(name) {
 }
 
 function updateHotels(destination) {
-    fetch("data.json")
+    fetch("https://raw.githubusercontent.com/atlem/Travel-Office/refs/heads/main/data.json")
         .then(response => response.json())
         .then(data => {
             const hotelSelect = document.getElementById("hotel");
@@ -108,7 +108,7 @@ function startSlideshow() {
 }
 
 function calculatePrice() {
-    fetch("data.json")
+    fetch("https://raw.githubusercontent.com/atlem/Travel-Office/refs/heads/main/data.json")
         .then(response => response.json())
         .then(data => {
             const destination = document.getElementById("destination").value;

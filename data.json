@@ -1,8 +1,8 @@
 {
     "destinations": [
-        {"name": "Decryptia", "price": 200, "image": "Decryptia.png", "description": "A futuristic cyber metropolis."},
-        {"name": "Vermillion", "price": 300, "image": "Vermillion.png", "description": "A stunning city of endless red canyons."},
-        {"name": "Oblivion Bay", "price": 250, "image": "OblivionBay.png", "description": "A mystical coastal paradise."}
+        {"name": "Decryptia", "price": 200, "image": "decryptia.jpg", "description": "A futuristic cyber metropolis."},
+        {"name": "Vermillion", "price": 300, "image": "vermillion.jpg", "description": "A stunning city of endless red canyons."},
+        {"name": "Oblivion Bay", "price": 250, "image": "oblivion.jpg", "description": "A mystical coastal paradise."}
     ],
     "hotels": [
         {"name": "Encryptia Grand Hotel", "price": 100},

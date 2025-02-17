@@ -8,5 +8,11 @@
         {"name": "Encryptia Grand Hotel", "price": 100},
         {"name": "Decryptia Lodge", "price": 80},
         {"name": "Vermillion Suites", "price": 120}
+    ],
+    "travel_modes": [
+        {"name": "Train", "price": 50},
+        {"name": "Bus", "price": 50},
+        {"name": "Flight", "price": 100},
+        {"name": "Teleport", "price": 500}
     ]
 }

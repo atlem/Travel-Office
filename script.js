@@ -4,12 +4,17 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             const destinationSelect = document.getElementById("destination");
             const hotelSelect = document.getElementById("hotel");
+            const destinationList = document.getElementById("destination-list");
 
             data.destinations.forEach(destination => {
                 let option = document.createElement("option");
                 option.value = destination.name;
                 option.textContent = destination.name;
                 destinationSelect.appendChild(option);
+                
+                let destinationItem = document.createElement("div");
+                destinationItem.innerHTML = `<h3>${destination.name}</h3><img src="${destination.image}" alt="${destination.name}"><p>${destination.description}</p>`;
+                destinationList.appendChild(destinationItem);
             });
 
             data.hotels.forEach(hotel => {

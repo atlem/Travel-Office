@@ -11,7 +11,92 @@ document.addEventListener("DOMContentLoaded", function () {
             const hotelSelect = document.getElementById("hotel");
             const travelSelect = document.getElementById("travel");
             const destinationList = document.getElementById("destination-list");
+            const slideshow = document.getElementById("slideshow");document.addEventListener("DOMContentLoaded", function () {
+    fetch("data.json")
+        .then(response => response.json())
+        .then(data => {
+            const destinationSelect = document.getElementById("destination");
+            const hotelSelect = document.getElementById("hotel");
+            const travelSelect = document.getElementById("travel");
+            const destinationList = document.getElementById("destination-list");
             const slideshow = document.getElementById("slideshow");
+            const bookingSection = document.getElementById("booking");
+
+            if (!data.destinations || !data.hotels) {
+                console.error("Error: Missing data in JSON");
+                return;
+            }
+
+            data.destinations.forEach(destination => {
+                let option = document.createElement("option");
+                option.value = destination.name;
+                option.textContent = destination.name;
+                destinationSelect.appendChild(option);
+                
+                let destinationItem = document.createElement("div");
+                destinationItem.innerHTML = `<h3>${destination.name}</h3>
+                <img src="${destination.image}" alt="${destination.name}" class="thumbnail" onclick="selectDestination('${destination.name}')">
+                <p>${destination.description}</p>`;
+                destinationList.appendChild(destinationItem);
+                
+                let slide = document.createElement("img");
+                slide.src = destination.image;
+                slide.alt = destination.name;
+                slide.classList.add("slide");
+                slide.style.display = "none";
+                slide.onclick = () => {
+                    selectDestination(destination.name);
+                    bookingSection.scrollIntoView({ behavior: 'smooth' });
+                };
+                slideshow.appendChild(slide);
+            });
+
+            updateHotels(destinationSelect.value);
+            destinationSelect.addEventListener("change", function () {
+                updateHotels(this.value);
+            });
+
+            ["Train", "Bus", "Flight", "Teleport"].forEach(mode => {
+                let option = document.createElement("option");
+                option.value = mode.toLowerCase();
+                option.textContent = mode;
+                travelSelect.appendChild(option);
+            });
+
+            startSlideshow();
+        })
+        .catch(error => console.error("Fetch error:", error));
+});
+
+function calculatePrice() {
+    const destination = document.getElementById("destination").value;
+    const hotel = document.getElementById("hotel").value;
+    const travel = document.getElementById("travel").value;
+    const nights = parseInt(document.getElementById("nights").value);
+
+    fetch("calculate_price", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            destination: destination,
+            hotel: hotel,
+            travel: travel,
+            nights: nights
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            console.error("Error:", data.error);
+            document.getElementById("priceOutput").textContent = "Error calculating price.";
+        } else {
+            document.getElementById("priceOutput").textContent = `Total Price: $${data.total_price}`;
+        }
+    })
+    .catch(error => console.error("Fetch error in calculatePrice:", error));
+}
             const bookingSection = document.getElementById("booking");
 
             if (!data.destinations || !data.hotels) {

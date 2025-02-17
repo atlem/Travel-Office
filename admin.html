@@ -5,6 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Admin Panel</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .admin-panel {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        .checkmark {
+            color: green;
+            font-weight: bold;
+        }
+        .crossmark {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -26,26 +68,26 @@
                     <tr>
                         <td>John Doe</td>
                         <td>2025-02-20</td>
-                        <td>With Breakfast</td>
-                        <td>Checked Out</td>
+                        <td><span class="checkmark">✔</span></td>
+                        <td><span class="checkmark">✔</span></td>
                     </tr>
                     <tr>
                         <td>Jane Smith</td>
                         <td>2025-02-21</td>
-                        <td>Without Breakfast</td>
-                        <td>Not Checked Out</td>
+                        <td><span class="crossmark">✘</span></td>
+                        <td><span class="crossmark">✘</span></td>
                     </tr>
                     <tr>
                         <td>Robert Johnson</td>
                         <td>2025-02-22</td>
-                        <td>With Breakfast</td>
-                        <td>Checked Out</td>
+                        <td><span class="checkmark">✔</span></td>
+                        <td><span class="checkmark">✔</span></td>
                     </tr>
                     <tr>
                         <td>Emily Brown</td>
                         <td>2025-02-23</td>
-                        <td>Without Breakfast</td>
-                        <td>Not Checked Out</td>
+                        <td><span class="crossmark">✘</span></td>
+                        <td><span class="crossmark">✘</span></td>
                     </tr>
                 </tbody>
             </table>

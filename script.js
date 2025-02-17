@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const slideshow = document.getElementById("slideshow");
             const bookingSection = document.getElementById("booking");
 
-            data.destinations.forEach(destination => {
+            data.destination.forEach(destination => {
                 let option = document.createElement("option");
                 option.value = destination.name;
                 option.textContent = destination.name;
